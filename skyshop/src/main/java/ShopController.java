@@ -1,0 +1,30 @@
+import product.Product;
+import service.Article;
+import service.RestController;
+import service.StorageService;
+
+import java.util.Collection;
+
+@RestController
+public class ShopController {
+
+    private final StorageService storageService;
+
+    public ShopController(StorageService storageService) {
+        this.storageService = storageService;
+    }
+
+    /**
+     * Получение всех продуктов.
+     */
+    public Collection<Product> getAllProducts() {
+        return storageService.getAllProducts();
+    }
+
+    /**
+     * Получение всех статей.
+     */
+    public Collection<Article> getAllArticles() {
+        return storageService.getAllArticles();
+    }
+}
