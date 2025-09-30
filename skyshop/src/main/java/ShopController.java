@@ -1,11 +1,9 @@
 import product.Product;
 import service.Article;
-import service.RestController;
 import service.StorageService;
 
 import java.util.Collection;
 
-@RestController
 public class ShopController {
 
     private final StorageService storageService;

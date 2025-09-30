@@ -8,4 +8,6 @@ public abstract class ConcreteProductA extends Product {
     public ConcreteProductA(UUID uuid, String phoneA, double v) {
         super();
     }
+
+    public abstract boolean matches(String pattern);
 }

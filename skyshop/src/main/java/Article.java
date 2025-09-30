@@ -1,21 +1,32 @@
+import product.Searchable;
+
 import java.util.Date;
+import java.util.UUID;
 
-public class Article {
-    private long id;
-    private String title;
-    private Date createdAt;
 
-    public Article(long id, String title, Date createdAt) {
-        this.id = id;
-        this.title = title;
-        this.createdAt = createdAt;
+public abstract class Article implements Searchable {
+    private final UUID id = UUID.randomUUID();
+    private String name;
+    private String contentType;
+
+    public Article(String name, String contentType) {
+        this.name = name;
+        this.contentType = contentType;
     }
 
-    // Геттеры и сеттеры
-    public long getId() { return id; }
-    public void setId(long id) { this.id = id; }
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
-    public Date getCreatedAt() { return createdAt; }
-    public void setCreatedAt(Date createdAt) { this.createdAt = createdAt; }
+    // Реализация методов интерфейса Searchable
+    @Override
+    public String getSearchTerm() { return name; }
+    @Override
+    public String getContentType() { return contentType; }
+    @Override
+    public String getName() { return name; }
+
+    // Метод getId()
+    public UUID getId() { return id; }
+
+    public String getTitle() {
+
+        return "";
+    }
 }

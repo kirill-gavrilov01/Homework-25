@@ -1,11 +1,14 @@
 package product;
 
-public abstract class Product implements product.Searchable {
-    private String name;
-    private double price;
+import java.util.UUID;
 
-    public Product(String name, double price) {
-        this.name = name;
+public abstract class Product implements Searchable {
+    protected final UUID id = UUID.randomUUID();
+    protected String productName;
+    protected double price;
+
+    public Product(String productName, double price) {
+        this.productName = productName;
         this.price = price;
     }
 
@@ -13,9 +16,14 @@ public abstract class Product implements product.Searchable {
 
     }
 
-    // Геттеры и сеттеры
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
+    // Реализация методов интерфейса Searchable
+    @Override
+    public String getSearchTerm() { return productName; }
+    @Override
+    public String getContentType() { return "product"; }
+    @Override
+    public String getName() { return productName; }
+
+    // Метод getId()
+    public UUID getId() { return id; }
 }

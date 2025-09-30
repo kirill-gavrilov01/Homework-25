@@ -5,7 +5,6 @@ import product.Searchable;
 
 import java.util.*;
 
-@service.Service
 public class StorageService {
 
     private final Map<UUID, Product> products = new HashMap<>();

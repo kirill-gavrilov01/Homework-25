@@ -1,8 +1,11 @@
 package product;
-import java.util.UUID;
+
+
+// Интерфейс Searchable.java
 public interface Searchable {
-    UUID getId();
+    String getSearchTerm();
+    String getContentType();
+    String getName();
 
     boolean matches(String pattern);
 }
-
