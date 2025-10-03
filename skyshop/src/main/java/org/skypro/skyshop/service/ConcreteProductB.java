@@ -1,6 +1,6 @@
-package service;
+package org.skypro.skyshop.service;
 
-import product.Product;
+import org.skypro.skyshop.product.Product;
 
 import java.util.UUID;
 

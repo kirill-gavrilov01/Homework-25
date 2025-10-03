@@ -1,5 +1,8 @@
-import product.Product;
-import product.Searchable;
+package org.skypro.skyshop;
+
+import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.Searchable;
+import org.skypro.skyshop.service.Article;
 
 import java.util.UUID;
 
@@ -19,7 +22,7 @@ public class SearchResult {
     public static SearchResult fromSearchable(Searchable searchable) {
         if (searchable instanceof Product) {
             Product product = (Product) searchable;
-            return new SearchResult(product.getName(), "product");
+            return new SearchResult(product.getName(), "org/skypro/skyshop/product");
         } else if (searchable instanceof Article) {
             Article article = (Article) searchable;
             return new SearchResult(article.getTitle(), "article");

@@ -1,7 +1,7 @@
-package product;
+package org.skypro.skyshop.product;
 
 // Продукт со скидкой DiscountedProducts.java
-public abstract class DiscountedProducts extends Product {
+public class DiscountedProducts extends Product {
     private double discountPercentage;
 
     public DiscountedProducts(String productName, double price, double discountPercentage) {

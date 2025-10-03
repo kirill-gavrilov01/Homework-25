@@ -1,7 +1,7 @@
-package service;
+package org.skypro.skyshop.service;
 
-import product.Product;
-import product.Searchable;
+import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.Searchable;
 
 import java.util.*;
 

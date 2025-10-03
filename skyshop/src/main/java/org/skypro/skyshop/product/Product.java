@@ -1,8 +1,8 @@
-package product;
+package org.skypro.skyshop.product;
 
 import java.util.UUID;
 
-public abstract class Product implements Searchable {
+public  class Product implements Searchable {
     protected final UUID id = UUID.randomUUID();
     protected String productName;
     protected double price;
@@ -20,9 +20,14 @@ public abstract class Product implements Searchable {
     @Override
     public String getSearchTerm() { return productName; }
     @Override
-    public String getContentType() { return "product"; }
+    public String getContentType() { return "org/skypro/skyshop/product"; }
     @Override
     public String getName() { return productName; }
+
+    @Override
+    public boolean matches(String pattern) {
+        return false;
+    }
 
     // Метод getId()
     public UUID getId() { return id; }

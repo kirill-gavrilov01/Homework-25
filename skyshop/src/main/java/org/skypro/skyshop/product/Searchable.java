@@ -1,4 +1,4 @@
-package product;
+package org.skypro.skyshop.product;
 
 
 // Интерфейс Searchable.java

@@ -1,10 +1,9 @@
-import product.Searchable;
+import org.skypro.skyshop.product.Searchable;
 
-import java.util.Date;
 import java.util.UUID;
 
 
-public abstract class Article implements Searchable {
+public  class Article implements Searchable {
     private final UUID id = UUID.randomUUID();
     private String name;
     private String contentType;
@@ -21,6 +20,11 @@ public abstract class Article implements Searchable {
     public String getContentType() { return contentType; }
     @Override
     public String getName() { return name; }
+
+    @Override
+    public boolean matches(String pattern) {
+        return false;
+    }
 
     // Метод getId()
     public UUID getId() { return id; }

@@ -1,14 +1,11 @@
-package service;
+package org.skypro.skyshop.service;
 
-import product.Searchable;
+import org.skypro.skyshop.product.Searchable;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
-
-import java.util.*;
 
 public class SearchService {
     private final StorageService storageService;

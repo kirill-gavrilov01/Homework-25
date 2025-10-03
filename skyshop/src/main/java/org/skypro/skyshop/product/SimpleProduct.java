@@ -1,6 +1,6 @@
-package product;
+package org.skypro.skyshop.product;
 
-public abstract class SimpleProduct extends Product {
+public class SimpleProduct extends Product {
     public SimpleProduct(String productName, double price) {
         super(productName, price);
     }
