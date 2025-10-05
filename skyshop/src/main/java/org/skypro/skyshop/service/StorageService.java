@@ -1,17 +1,20 @@
 package org.skypro.skyshop.service;
 
+import org.skypro.skyshop.controller.Article;
+import org.springframework.stereotype.Service;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.Searchable;
 
 import java.util.*;
 
+@Service
 public class StorageService {
 
     private final Map<UUID, Product> products = new HashMap<>();
-    private final Map<UUID, Article> articles = new HashMap<>();
+    private final Map<UUID, org.skypro.skyshop.service.Article> articles = new HashMap<>();
 
     /**
-     * Конструктор создает начальные объекты и добавляет их в хранилища.
+     * Конструктор создаёт начальные объекты и добавляет их в хранилища.
      */
     public StorageService() {
         initializeData(); // Метод инициализации данных
@@ -31,7 +34,7 @@ public class StorageService {
      *
      * @return коллекция всех статей
      */
-    public Collection<Article> getAllArticles() {
+    public Collection<org.skypro.skyshop.service.Article> getAllArticles() {
         return Collections.unmodifiableCollection(articles.values());
     }
 
@@ -42,31 +45,11 @@ public class StorageService {
         // Тестовые продукты
         products.put(
                 UUID.randomUUID(),
-                new ConcreteProductA(UUID.randomUUID(), "Phone A", 500.0) {
-                    @Override
-                    public UUID getId() {
-                        return null;
-                    }
-
-                    @Override
-                    public boolean matches(String pattern) {
-                        return false;
-                    }
-                });
+                new ConcreteProductA(UUID.randomUUID(), "Phone A", 500.0));
 
         products.put(
                 UUID.randomUUID(),
-                new ConcreteProductB(UUID.randomUUID(), "Laptop B", 800.0) {
-                    @Override
-                    public UUID getId() {
-                        return null;
-                    }
-
-                    @Override
-                    public boolean matches(String pattern) {
-                        return false;
-                    }
-                });
+                new org.skypro.skyshop.service.ConcreteProductB(UUID.randomUUID(), "Laptop B", 800.0));
 
         // Тестовые статьи
         articles.put(

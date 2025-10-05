@@ -1,5 +1,7 @@
 package org.skypro.skyshop.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.skypro.skyshop.product.Searchable;
 
 import java.util.ArrayList;
@@ -7,9 +9,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+@Service
 public class SearchService {
     private final StorageService storageService;
 
+    @Autowired
     public SearchService(StorageService storageService) {
         this.storageService = storageService;
     }

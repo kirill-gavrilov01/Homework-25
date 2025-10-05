@@ -4,10 +4,7 @@ import org.skypro.skyshop.product.Product;
 
 import java.util.UUID;
 
-public abstract class ConcreteProductB extends Product {
+public class ConcreteProductB extends Product {
     public ConcreteProductB(UUID uuid, String laptopB, double v) {
-        super();
     }
-
-    public abstract boolean matches(String pattern);
 }

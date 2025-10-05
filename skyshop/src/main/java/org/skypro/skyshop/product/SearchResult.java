@@ -1,8 +1,6 @@
-package org.skypro.skyshop;
+package org.skypro.skyshop.product;
 
-import org.skypro.skyshop.product.Product;
-import org.skypro.skyshop.product.Searchable;
-import org.skypro.skyshop.service.Article;
+import org.skypro.skyshop.controller.Article;
 
 import java.util.UUID;
 
