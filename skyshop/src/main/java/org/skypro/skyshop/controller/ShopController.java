@@ -1,14 +1,13 @@
+
 package org.skypro.skyshop.controller;
 
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.service.Article;
 import org.skypro.skyshop.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+        import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/v1/")
@@ -35,5 +34,27 @@ public class ShopController {
     @GetMapping("/articles")
     public Collection<Article> getAllArticles() {
         return storageService.getAllArticles();
+    }
+
+    /**
+     * Поиск продуктов по запросу.
+     *
+     * @param query строка поиска
+     * @return коллекция найденных продуктов
+     */
+    @GetMapping("/search/products")
+    public Collection<Product> searchProducts(@RequestParam(value="q") String query) {
+        return storageService.findProductsByQuery(query);
+    }
+
+    /**
+     * Поиск статей по запросу.
+     *
+     * @param query строка поиска
+     * @return коллекция найденных статей
+     */
+    @GetMapping("/search/articles")
+    public Collection<Article> searchArticles(@RequestParam(value="q") String query) {
+        return storageService.findArticlesByQuery(query);
     }
 }

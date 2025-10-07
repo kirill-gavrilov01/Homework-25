@@ -1,67 +1,61 @@
 package org.skypro.skyshop.service;
 
-import org.skypro.skyshop.controller.Article;
-import org.springframework.stereotype.Service;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.Searchable;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
-@Service
-public class StorageService {
+public interface StorageService {
 
-    private final Map<UUID, Product> products = new HashMap<>();
-    private final Map<UUID, org.skypro.skyshop.service.Article> articles = new HashMap<>();
+    Collection<Product> getAllProducts();
 
-    /**
-     * Конструктор создаёт начальные объекты и добавляет их в хранилища.
-     */
-    public StorageService() {
-        initializeData(); // Метод инициализации данных
-    }
+    Collection<Article> getAllArticles();
 
-    /**
-     * Возвращает коллекцию всех продуктов.
-     *
-     * @return коллекция всех продуктов
-     */
+    List<Product> findProductsByQuery(String query); // Новый метод поиска продуктов
+
+    List<Article> findArticlesByQuery(String query); // Новый метод поиска статей
+
+    Collection<Searchable> getAllSearchables();
+}
+
+// Класс реализации интерфейса StorageServiceImpl.java
+class StorageServiceImpl implements StorageService {
+
+    // Предположим, у вас есть хранилище данных
+    private Collection<Product> products;
+    private Collection<Article> articles;
+
+    @Override
     public Collection<Product> getAllProducts() {
-        return Collections.unmodifiableCollection(products.values());
+        return List.of();
     }
 
-    /**
-     * Возвращает коллекцию всех статей.
-     *
-     * @return коллекция всех статей
-     */
-    public Collection<org.skypro.skyshop.service.Article> getAllArticles() {
-        return Collections.unmodifiableCollection(articles.values());
+    @Override
+    public Collection<Article> getAllArticles() {
+        return List.of();
     }
 
-    /**
-     * Приватный метод для заполнения хранилищ тестовыми объектами.
-     */
-    private void initializeData() {
-        // Тестовые продукты
-        products.put(
-                UUID.randomUUID(),
-                new ConcreteProductA(UUID.randomUUID(), "Phone A", 500.0));
-
-        products.put(
-                UUID.randomUUID(),
-                new org.skypro.skyshop.service.ConcreteProductB(UUID.randomUUID(), "Laptop B", 800.0));
-
-        // Тестовые статьи
-        articles.put(
-                UUID.randomUUID(),
-                new Article(UUID.randomUUID(), 1L, "Test Article Title", new Date()));
-
-        articles.put(
-                UUID.randomUUID(),
-                new Article(UUID.randomUUID(), 2L, "Another Test Article", new Date()));
+    // Примеры реализации методов поиска
+    @Override
+    public List<Product> findProductsByQuery(String query) {
+        return products.stream()
+                .filter(product -> product.getName().contains(query))
+                .collect(Collectors.toList());
     }
 
+    @Override
+    public List<Article> findArticlesByQuery(String query) {
+        return articles.stream()
+                .filter(article -> article.getTitle().contains(query))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public Collection<Searchable> getAllSearchables() {
         return List.of();
     }
+
+    // Другие методы...
 }
