@@ -23,6 +23,7 @@ public class ShopController {
     /**
      * Получение всех продуктов.
      */
+
     @GetMapping("/products")
     public Collection<Product> getAllProducts() {
         return storageService.getAllProducts();
@@ -31,6 +32,7 @@ public class ShopController {
     /**
      * Получение всех статей.
      */
+
     @GetMapping("/articles")
     public Collection<Article> getAllArticles() {
         return storageService.getAllArticles();

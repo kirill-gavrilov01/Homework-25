@@ -1,12 +1,11 @@
 package org.skypro.skyshop.service;
 
 import org.skypro.skyshop.controller.Article;
+import org.skypro.skyshop.product.Product;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 
 @Service

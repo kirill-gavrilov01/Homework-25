@@ -16,6 +16,9 @@ public  class Product implements Searchable {
 
     }
 
+    public Product(String productA) {
+    }
+
     // Реализация методов интерфейса Searchable
     @Override
     public String getSearchTerm() { return productName; }
