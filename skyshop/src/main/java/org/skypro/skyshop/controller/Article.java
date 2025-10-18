@@ -10,7 +10,7 @@ public class Article extends org.skypro.skyshop.service.Article {
     }
 
     public Article(String name, String contentType) {
-        super(name, contentType);
+        super(Long.parseLong(name), contentType);
     }
 
     public String getTitle() {

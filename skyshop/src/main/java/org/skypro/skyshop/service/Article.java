@@ -8,8 +8,8 @@ public  class Article implements Searchable {
     private String name;
     private String contentType;
 
-    public Article(String name, String contentType) {
-        this.name = name;
+    public Article(long name, String contentType) {
+        this.name = String.valueOf(name);
         this.contentType = contentType;
     }
 

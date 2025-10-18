@@ -1,31 +1,37 @@
 package org.skypro.skyshop.service;
 
-import org.skypro.skyshop.controller.Article;
-import org.skypro.skyshop.product.Product;
+
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.*;
 
-
 @Service
 public class ArticlesService {
-    List<Article> articles = new ArrayList<>();
-    private Article article;
 
-    public void addArticle() {
-        articles.add(article);
+    private final Map<Long, Article> articles = new HashMap<>();
+
+    public ArticlesService() {
+        initializeTestData();
     }
 
-    public List<Article> findAllArticles() {
-        return articles;
+    private void initializeTestData() {
+        articles.put(1L, new Article(1L, "JavaScript for Beginners"));
+        articles.put(2L, new Article(2L, "Spring Boot in Action"));
+        articles.put(3L, new Article(3L, "React Native App Development"));
     }
 
-    public Optional<Article> findById(UUID id) {
-        return articles.stream().filter(a -> a.getId().equals(id)).findFirst();
+    public List<Article> getAllArticles() {
+        return new ArrayList<>(articles.values());
     }
 
-    public void addArticle(Article article) {
+    public List<org.skypro.skyshop.controller.Article> findAllArticles() {
+   return null;
+    }
 
+    public void addArticle(org.skypro.skyshop.controller.Article article) {
+    }
+
+    public Optional<org.skypro.skyshop.controller.Article> findById(UUID id) {
+    return null;
     }
 }
