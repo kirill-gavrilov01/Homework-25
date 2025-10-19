@@ -23,15 +23,4 @@ public class ArticlesService {
     public List<Article> getAllArticles() {
         return new ArrayList<>(articles.values());
     }
-
-    public List<org.skypro.skyshop.controller.Article> findAllArticles() {
-   return null;
-    }
-
-    public void addArticle(org.skypro.skyshop.controller.Article article) {
-    }
-
-    public Optional<org.skypro.skyshop.controller.Article> findById(UUID id) {
-    return null;
-    }
 }
