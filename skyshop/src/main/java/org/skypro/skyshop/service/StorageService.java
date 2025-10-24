@@ -1,19 +1,51 @@
 package org.skypro.skyshop.service;
 
-// Импортируйте нужные типы
-import org.skypro.skyshop.product.Product;
-import org.skypro.skyshop.product.Searchable;
+import org.skypro.skyshop.model.a.article.Article;
+import org.skypro.skyshop.model.a.product.Product;
+import org.skypro.skyshop.model.a.product.special.DiscountedProducts;
+import org.skypro.skyshop.model.a.product.special.FixPriceProduct;
+import org.skypro.skyshop.model.a.product.special.SimpleProduct;
+import org.skypro.skyshop.model.a.search.Searchable;
+import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public interface StorageService {
-    Collection<Searchable> getAllSearchables(); // Метод для получения всех поисковых объектов
 
-    Collection<Product> getAllProducts();
+@Service
+public class StorageService {
+    private final Map<UUID, Product> products = new HashMap<>();
+    private final Map<UUID, Article> articles = new HashMap<>();
 
-    Collection<Article> findArticlesByQuery(String query);
+    public StorageService() {
+        initializeData();
+    }
 
-    Collection<Product> findProductsByQuery(String query);
+    public Collection<Product> getAllProducts() {
+        return products.values();
+    }
 
-    Collection<Article> getAllArticles();
+    public Collection<Article> getAllArticles() {
+        return articles.values();
+    }
+
+    public Collection<Searchable> getAllSearchables() {
+        return Stream.concat(products.values().stream(), articles.values().stream())
+                .collect(Collectors.toList());
+    }
+
+    private void initializeData() {
+        UUID uuid1 = UUID.randomUUID();
+        products.put(uuid1, new SimpleProduct(uuid1, "Дырокол", 500));
+        UUID uuid2 = UUID.randomUUID();
+        products.put(uuid2, new DiscountedProducts(uuid2, "Степлер", 700, 30));
+        UUID uuid3 = UUID.randomUUID();
+        products.put(uuid3, new FixPriceProduct(uuid3, "Ручка шариковая, синяя"));
+        UUID artUuid1 = UUID.randomUUID();
+        articles.put(artUuid1, new Article(artUuid1, "Про степлер", "Разнообразие, виды, назначение"));
+        UUID artUuid2 = UUID.randomUUID();
+        articles.put(artUuid2, new Article(artUuid2, "История степлера", "В изобретении степлера Ученые нашли " +
+                "внеземной след!"));
+    }
 }
